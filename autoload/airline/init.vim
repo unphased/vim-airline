@@ -83,6 +83,20 @@ function! airline#init#bootstrap()
   unlet g:airline#init#bootstrapping
 endfunction
 
+function! FileSize()
+  let bytes = getfsize(expand("%:p"))
+  if bytes <= 0
+    return ""
+  endif
+  if bytes < 65536
+    return bytes
+  elseif bytes < 67108864
+    return (bytes / 1024) . "K"
+  else
+    return (bytes / 1048576) . "M"
+  endif
+endfunction
+
 function! airline#init#sections()
   let spc = g:airline_symbols.space
   if !exists('g:airline_section_a')
@@ -104,7 +118,7 @@ function! airline#init#sections()
     let g:airline_section_y = airline#section#create_right(['ffenc'])
   endif
   if !exists('g:airline_section_z')
-    let g:airline_section_z = airline#section#create(['%p%%'.spc, 'linenr', ':%c ', '%b 0x%02B'])
+    let g:airline_section_z = airline#section#create(['%p%%'.spc, '%#__accent_bold#%l%#__restore__#', ':%c'.spc, '%{g:airline_symbols.linenr}'.spc, '%L'.spc, '%o/%{FileSize()}'.spc, '0x%02B'])
   endif
   if !exists('g:airline_section_warning')
     let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
