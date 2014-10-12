@@ -97,6 +97,19 @@ function! FileSize()
   endif
 endfunction
 
+" needed because the %o is the actual offset + 1. This is aggravating.
+function! ByteOffset()
+  return line2byte( line( "." ) ) + col( "." ) - 2
+endfunction
+
+function! PercentBytes()
+  let byte = line2byte( line( "." ) ) + col( "." ) - 1 " same as %o
+  let size = (line2byte( line( "$" ) + 1 ) - 1)
+  let percent = str2float(byte) / str2float(size) * 100
+  let frac = percent - trunc(percent)
+  return float2nr(percent) . "." . float2nr(frac * 10)
+endfunction
+
 function! airline#init#sections()
   let spc = g:airline_symbols.space
   if !exists('g:airline_section_a')
@@ -118,7 +131,7 @@ function! airline#init#sections()
     let g:airline_section_y = airline#section#create_right(['ffenc'])
   endif
   if !exists('g:airline_section_z')
-    let g:airline_section_z = airline#section#create(['%p%%'.spc, 'linenr', '/%L', ':%c'.spc, '%o/%{FileSize()}'.spc, '0x%02B'])
+    let g:airline_section_z = airline#section#create(['%{PercentBytes()}%%'.spc, 'linenr', '/%L', ':%c'.spc, '%{ByteOffset()}/%{FileSize()}'.spc, '0x%02B'])
   endif
   if !exists('g:airline_section_warning')
     let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
