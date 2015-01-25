@@ -78,7 +78,8 @@ function! airline#init#bootstrap()
   call airline#parts#define_raw('file', '%f%m')
   call airline#parts#define_raw('linenr', '%{g:airline_symbols.linenr}%#__accent_bold# %l%#__restore__#')
   call airline#parts#define_function('ffenc', 'airline#parts#ffenc')
-  call airline#parts#define_empty(['hunks', 'branch', 'tagbar', 'syntastic', 'eclim', 'whitespace'])
+  call airline#parts#define_empty(['hunks', 'branch', 'tagbar', 'syntastic', 'eclim', 'whitespace','windowswap'])
+  call airline#parts#define_text('capslock', '')
 
   unlet g:airline#init#bootstrapping
 endfunction
@@ -113,7 +114,7 @@ endfunction
 function! airline#init#sections()
   let spc = g:airline_symbols.space
   if !exists('g:airline_section_a')
-    let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'iminsert'])
+    let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'capslock', 'iminsert'])
   endif
   if !exists('g:airline_section_b')
     let g:airline_section_b = airline#section#create(['hunks', 'branch'])
@@ -131,7 +132,7 @@ function! airline#init#sections()
     let g:airline_section_y = airline#section#create_right(['ffenc'])
   endif
   if !exists('g:airline_section_z')
-    let g:airline_section_z = airline#section#create(['%{PercentBytes()}%%'.spc, 'linenr', '/%L', ':%c'.spc, '%{ByteOffset()}/%{FileSize()}'.spc, '0x%02B'])
+    let g:airline_section_z = airline#section#create(['windowswap', '%{PercentBytes()}%%'.spc, 'linenr', '/%L', ':%c'.spc, '%{ByteOffset()}/%{FileSize()}'.spc, '0x%02B'])
   endif
   if !exists('g:airline_section_warning')
     let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
