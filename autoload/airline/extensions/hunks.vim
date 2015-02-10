@@ -73,7 +73,7 @@ function! airline#extensions#hunks#get_hunks()
       endif
     endfor
   endif
-  return strpart(string, 0, strlen(string)-1)
+  return string
 endfunction
 
 function! airline#extensions#hunks#init(ext)
