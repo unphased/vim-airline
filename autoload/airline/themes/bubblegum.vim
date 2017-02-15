@@ -29,7 +29,8 @@ let s:N2 = [s:gui_light_gray, s:gui_med_gray_lo, s:cterm_light_gray, s:cterm_med
 let s:N3 = [s:gui_green, s:gui_med_gray_hi, s:cterm_green, s:cterm_darker_gray]
 let g:airline#themes#bubblegum#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 let g:airline#themes#bubblegum#palette.normal_modified = {
-      \ 'airline_c': [s:gui_orange, s:gui_med_gray_hi, s:cterm_dark_gray, s:cterm_red, ''],
+      \ 'airline_c': [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, ''],
+      \ 'airline_y': [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, ''],
       \ }
 
 " Insert mode
@@ -37,7 +38,8 @@ let s:I1 = [s:gui_med_gray_hi, s:gui_blue, s:cterm_med_gray_hi, s:cterm_blue]
 let s:I3 = [s:gui_blue, s:gui_med_gray_hi, s:cterm_blue, s:cterm_darker_gray]
 let g:airline#themes#bubblegum#palette.insert = airline#themes#generate_color_map(s:I1, s:N2, s:I3)
 let g:airline#themes#bubblegum#palette.insert_modified = {
-      \ 'airline_c': [s:gui_orange, s:gui_med_gray_hi, s:cterm_dark_gray, s:cterm_blue, ''],
+      \ 'airline_c': [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, ''],
+      \ 'airline_y': [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, ''],
       \ }
 let g:airline#themes#bubblegum#palette.insert_paste = {
       \ 'airline_a': [s:gui_dark_gray, s:gui_orange, s:cterm_dark_gray, s:cterm_orange, ''],
@@ -66,7 +68,7 @@ let g:airline#themes#bubblegum#palette.inactive_modified = {
 " tabline
 let g:airline#themes#bubblegum#palette.tabline = {
       \ 'airline_tabtype':  [s:gui_med_gray_hi, '', s:cterm_med_gray_hi, '', ''],
-      \ 'airline_tabmod':  [s:gui_dark_gray, '', s:cterm_dark_gray, s:cterm_red, 'bold'],
+      \ 'airline_tabmod':  [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, 'bold'],
       \ }
 
 " CtrlP
