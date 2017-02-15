@@ -62,7 +62,7 @@ let g:airline#themes#bubblegum#palette.visual_modified = copy(g:airline#themes#b
 let s:IA = [s:gui_light_gray, s:gui_med_gray_hi, s:cterm_light_gray, s:cterm_dark_gray, '']
 let g:airline#themes#bubblegum#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
 let g:airline#themes#bubblegum#palette.inactive_modified = {
-      \ 'airline_c': [s:gui_orange, '', s:cterm_dark_gray, s:cterm_red, ''],
+      \ 'airline_c': [s:gui_dark_gray, s:gui_red, s:cterm_dark_gray, s:cterm_red, ''],
       \ }
 
 " tabline
