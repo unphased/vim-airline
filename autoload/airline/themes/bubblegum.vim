@@ -65,8 +65,8 @@ let g:airline#themes#bubblegum#palette.inactive_modified = {
 
 " tabline
 let g:airline#themes#bubblegum#palette.tabline = {
-      \ 'airline_tabtype':  ['', '', s:cterm_med_gray_hi, '', ''],
-      \ 'airline_tabmod':  ['', '', s:cterm_dark_gray, s:cterm_red, ''],
+      \ 'airline_tabtype':  [s:gui_med_gray_hi, '', s:cterm_med_gray_hi, '', ''],
+      \ 'airline_tabmod':  [s:gui_dark_gray, '', s:cterm_dark_gray, s:cterm_red, 'bold'],
       \ }
 
 " CtrlP
